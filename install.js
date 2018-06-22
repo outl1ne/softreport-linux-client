@@ -43,7 +43,7 @@ const next = () => {
         console.log("\x1b[32mSetup successful. Sending data to server...");
         
         const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js'); 
-        
+
         sendDataToSoftReport( () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
         })
@@ -70,7 +70,7 @@ const setConfig = (callback) => {
 const setupApiToken = () => {
     question('What is your API key?', token => {
       
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/' + ping?api_token=' + token );
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/ping?api_token=' + token );
         
         if (parseInt(result) !== 200) {
             rl.write('Invalid token (' + result + ')\n');
