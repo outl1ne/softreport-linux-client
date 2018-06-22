@@ -31,6 +31,8 @@ const dataToSend = Object.keys(config.dependencies).map(dependency => {
 
 const requestJsonData = JSON.stringify({dependencies});
 
+
+
 const options = {
     hostname: config.api.host,
     path: config.api.path + '/servers/' + config.serverId + '/dependencies?api_token=' + config.api.token,
@@ -44,24 +46,22 @@ const options = {
     },
 }
 
+const req = https.request(options, (res) => {
 
-const req = http.request(options, (res) => {
-
-    console.log('Status code ' + req.statusCode);
+    console.log('Status code ' + res.statusCode);
 
     if (res.statusCode === 200) {
         console.log('Data sent successfully');
+        successCallback();
+        return;
     }
 
     if (res.statusCode === 401) {
         console.log('Invalid api key');
     }
 
-    if (res.statusCode === 200) {
-        successCallback();
-    }
-
     res.on('data', (data) => {
+        process.stdout.write(data);
         //console.log(`BODY: ${chunk}`);
     });
 });

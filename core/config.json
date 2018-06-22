@@ -1,12 +1,12 @@
 {
     "api": {
-        "host": "soft-report.test",
+        "host": "softreport.io",
         "path": "/api",
-        "token": "test_token",
-        "protocol": "http:",
-        "port": 80
+        "token": "qa0uFR6GgyKljTNeynfuA0sMY5cGfLSoJlsPaTzfLAc1m8vSC25EVQttonC3",
+        "protocol": "https:",
+        "port": 443
     },
-    "serverId": "1",
+    "serverId": 2,
     "dependencies": {
         "nginx": true,
         "php": true,
