@@ -1,1 +1,17 @@
-{}
+{
+    "api": {
+        "host": "soft-report.test",
+        "path": "/api",
+        "token": "test_token",
+        "protocol": "http:",
+        "port": 80
+    },
+    "serverId": "1",
+    "dependencies": {
+        "nginx": true,
+        "php": true,
+        "mysql": true,
+        "npm" : true,
+        "node": true
+    } 
+}
