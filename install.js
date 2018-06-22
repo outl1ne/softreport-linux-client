@@ -1,8 +1,12 @@
+#!/usr/bin/env node
+
 const https = require('https');
 const fs = require('fs');
 const { execSync } = require('child_process');
 const homedir = require('os').homedir();
 const readline = require('readline');
+
+
 
 const runCommand = (command) => {
     console.log('\x1b[36m%s\x1b[0m', command);
@@ -25,7 +29,7 @@ runCommand('rm ' + zipfileName);
 
 let step = 1;
 
-const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
+//const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
 
 const rl = readline.createInterface({
  input: process.stdin,
@@ -33,8 +37,9 @@ const rl = readline.createInterface({
 });
 
 const question = (message, callback) => {
-
+    
     rl.question('\x1b[33m' + message + '\x1b[0m' + '\n', (response) => {        
+        console.log('resp ooooond');
         callback(response);       
     });
 }
@@ -47,7 +52,7 @@ const next = () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
         })
         
-        rl.close();
+        //rl.close();
         return;
     }
     questions[step]();
@@ -87,6 +92,7 @@ const setupApiToken = () => {
                 token: apiToken
             }
         }));    
+        console.log('test');
 
         next();
     });
@@ -100,7 +106,6 @@ const setupPackages = () => {
         packages.forEach(package => {
             packageConfig[package] = true;
         });
-
 
         console.log(packageConfig);
 
