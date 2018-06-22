@@ -3,7 +3,7 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const homedir = require('os').homedir();
 const readline = require('readline');
-
+const apiUrl = 'https://softreport.io/api/';
 
 const runCommand = (command) => {
     console.log('\x1b[36m%s\x1b[0m', command);
@@ -26,8 +26,6 @@ runCommand('rm ' + zipfileName);
 
 let step = 1;
 
-const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
-
 const rl = readline.createInterface({
  input: process.stdin,
  output: process.stdout
@@ -43,6 +41,8 @@ const question = (message, callback) => {
 const next = () => {
     if (questions.length < step + 1) {
         console.log("\x1b[32mSetup successful. Sending data to server...");
+        
+        const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js'); 
         
         sendDataToSoftReport( () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
@@ -70,7 +70,7 @@ const setConfig = (callback) => {
 const setupApiToken = () => {
     question('What is your API key?', token => {
       
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" https://softreport.io/api/ping?api_token=' + token );
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/' + ping?api_token=' + token );
         
         if (parseInt(result) !== 200) {
             rl.write('Invalid token (' + result + ')\n');
@@ -115,7 +115,7 @@ const setupPackages = () => {
 
 const setupServerID = () => {
     question('What is your server ID?', id => {
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" https://softreport.io/api/servers/' + id + '?api_token=' + apiToken);
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/servers/' + id + '?api_token=' + apiToken);
 
         if (parseInt(result) !== 200) {
             rl.write('Invalid server ID (' + result + ')\n');
