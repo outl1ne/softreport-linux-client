@@ -3,7 +3,7 @@ const http = require('http');
 const https = require('https');
 const config = require('./config.json');
 
-module.exports = sendDataToSoftReport = (successCallback) => {
+module.exports = (successCallback) => {
 
 dependencies = [];
 
