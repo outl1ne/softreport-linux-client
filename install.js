@@ -72,7 +72,7 @@ const setConfig = (callback) => {
 const setupApiToken = () => {
     question('What is your API key?', token => {
       
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" http://softreport.test/api/ping?api_token=' + token );
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" https://softreport.io/api/ping?api_token=' + token );
         
         if (parseInt(result) !== 200) {
             rl.write('Invalid token (' + result + ')\n');
