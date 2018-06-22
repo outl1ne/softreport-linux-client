@@ -7,18 +7,18 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Requirements
-Node, min version 8.11.3
-Git, min verison 2.18.0
+- Node, min version 8.11.3
+- Git, min version 2.18.0
 
 ## Installation
-Following command downloads install.sh from this repository.
+Following command downloads install.js from this repository.
 ```sh
-curl -o- https://raw.githubusercontent.com/optimistdigital/soft-report-linux-client/v0.0.1/install.sh | node
+curl -o- https://raw.githubusercontent.com/optimistdigital/soft-report-linux-client/master/install.js | node
 ```
 Command does the following:
 1. Downloads this repository
 2. TODO: Starts interactive CLI to setup config
-3. TODO: Sets up cron to periodically send version data to our backend
+3. TODO: Sets up cron to periodically send version data to SoftReport backend
 
 ## Supported software
 
