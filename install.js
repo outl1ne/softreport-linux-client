@@ -46,6 +46,7 @@ const next = () => {
 
         sendDataToSoftReport( () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
+            rl.close();
         })
         
         //rl.close();
@@ -70,7 +71,7 @@ const setConfig = (callback) => {
 const setupApiToken = () => {
     question('What is your API key?', token => {
       
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/ping?api_token=' + token );
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + 'ping?api_token=' + token );
         
         if (parseInt(result) !== 200) {
             rl.write('Invalid token (' + result + ')\n');
@@ -102,7 +103,6 @@ const setupPackages = () => {
             packageConfig[package] = true;
         });
 
-        console.log(packageConfig);
 
         setConfig((config) => ({
             ...config,
@@ -115,7 +115,7 @@ const setupPackages = () => {
 
 const setupServerID = () => {
     question('What is your server ID?', id => {
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + '/servers/' + id + '?api_token=' + apiToken);
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" ' + apiUrl + 'servers/' + id + '?api_token=' + apiToken);
 
         if (parseInt(result) !== 200) {
             rl.write('Invalid server ID (' + result + ')\n');
