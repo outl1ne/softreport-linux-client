@@ -11,7 +11,7 @@
 ## Requirements
 - Node, min version 8.11.3
 - Git, min version 2.18.0
-- unzip - If you don't have it. ```sudo apt-get install unzip```
+- Unzip - ```sudo apt-get install unzip```
 
 ## Installation
 Following script downloads install.js from this repository. Despite the script starting with seemingly dangerous command, it's not what you think.
@@ -22,7 +22,7 @@ trap 'rm -f "/tmp/exec.$$"' 0; trap 'exit $?' 1 2 3 15; curl -s https://raw.gith
 
 Command does the following:
 1. Downloads this repository
-2. TODO: Starts interactive CLI to setup config
+2. Starts interactive CLI to setup config
 3. TODO: Sets up cron to periodically send version data to SoftReport backend
 
 ## Supported software
