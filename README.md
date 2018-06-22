@@ -11,9 +11,11 @@
 ## Requirements
 - Node, min version 8.11.3
 - Git, min version 2.18.0
+- unzip - If you don't have it. ```sudo apt-get install unzip```
 
 ## Installation
-Following command downloads install.js from this repository.
+Following script downloads install.js from this repository. Despite the script starting with seemingly dangerous command, it's not what you think.
+It creates a temp file for node to execute from install.js. You can also download and execute install.js by yourself.
 ```
 trap 'rm -f "/tmp/exec.$$"' 0; trap 'exit $?' 1 2 3 15; curl -s https://raw.githubusercontent.com/optimistdigital/softreport-linux-client/master/install.js >/tmp/exec.$$; chmod +x /tmp/exec.$$; node /tmp/exec.$$
 ```

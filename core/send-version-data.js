@@ -31,8 +31,6 @@ const dataToSend = Object.keys(config.dependencies).map(dependency => {
 
 const requestJsonData = JSON.stringify({dependencies});
 
-
-
 const options = {
     hostname: config.api.host,
     path: config.api.path + '/servers/' + config.serverId + '/dependencies?api_token=' + config.api.token,
