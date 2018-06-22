@@ -47,6 +47,8 @@ const options = {
 
 const req = http.request(options, (res) => {
 
+    console.log('Status code ' + req.statusCode);
+
     if (res.statusCode === 200) {
         console.log('Data sent successfully');
     }
