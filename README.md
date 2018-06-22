@@ -22,8 +22,8 @@ Command does the following:
 
 ## Supported software
 
-nginx
-php
-mysql
-node
-npm
+1. nginx
+2. php
+3. mysql
+4. node
+5. npm
