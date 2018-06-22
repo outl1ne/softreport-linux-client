@@ -37,7 +37,6 @@ const rl = readline.createInterface({
 const question = (message, callback) => {
     
     rl.question('\x1b[33m' + message + '\x1b[0m' + '\n', (response) => {        
-        console.log('resp ooooond');
         callback(response);       
     });
 }
@@ -45,6 +44,7 @@ const question = (message, callback) => {
 const next = () => {
     if (questions.length < step + 1) {
         console.log("\x1b[32mSetup successful. Sending data to server...");
+        
         
         sendDataToSoftReport( () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
