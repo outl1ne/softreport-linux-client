@@ -3,7 +3,7 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const homedir = require('os').homedir();
 const readline = require('readline');
-
+const sendDataToSoftReport = require('./send-version-data');
 
 
 const runCommand = (command) => {
