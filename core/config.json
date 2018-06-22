@@ -2,7 +2,7 @@
     "api": {
         "host": "softreport.io",
         "path": "/api",
-        "token": "qa0uFR6GgyKljTNeynfuA0sMY5cGfLSoJlsPaTzfLAc1m8vSC25EVQttonC3",
+        "token": "Enter Token Here",
         "protocol": "https:",
         "port": 443
     },
