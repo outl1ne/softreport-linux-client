@@ -1,31 +1,9 @@
-const https = require('https');
-const fs = require('fs');
-const { execSync } = require('child_process');
-const homedir = require('os').homedir();
-const readline = require('readline');
 
-const runCommand = (command) => {
-    console.log('\x1b[36m%s\x1b[0m', command);
-    return execSync(command);
-}
-
-const dirToWrite = homedir + '/.softreport';
-const zipfileName = dirToWrite + '/master.zip';
-const sourceDir = dirToWrite + '/' + 'softreport-linux-client-master';
-const codeDirectory = dirToWrite;
-
-runCommand('rm -rf ' + dirToWrite);
-runCommand('mkdir -p ' + dirToWrite);
-// runCommand('rm ' + zipfileName);
-runCommand('curl -Lo ' + zipfileName + ' "https://github.com/optimistdigital/softreport-linux-client/archive/master.zip"');
-
-runCommand('mkdir -p ' + codeDirectory);
-runCommand('unzip ' + zipfileName + ' -d ' + codeDirectory);
-runCommand('rm ' + zipfileName);
+export default install = () => {
 
 let step = 1;
 
-const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
+const sendDataToSoftReport = require('.send-version-data.js');
 
 const rl = readline.createInterface({
  input: process.stdin,
@@ -63,6 +41,8 @@ const setConfig = (callback) => {
 
     const newConfig = callback(currentConfig);
 
+    console.log(newConfig);
+
     execSync('echo \'' + JSON.stringify(newConfig) + '\' > ' + configFile)
 }
 
@@ -95,7 +75,7 @@ const setupApiToken = () => {
 const setupPackages = () => {
     question('What packages do you want to use? Plesase write them comma separated. \n For example "nginx, php, node, mysql, npm"', (answer) => {
 
-        const packages = answer.replace(/ /g,'').split(',');
+        const packages = answer.split(', ');
         const packageConfig = {};
         packages.forEach(package => {
             packageConfig[package] = true;
@@ -140,3 +120,4 @@ const interactiveSetup = () => {
 };
 
 interactiveSetup();
+};

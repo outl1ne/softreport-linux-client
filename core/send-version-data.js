@@ -2,7 +2,8 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 const config = require('./config.json');
-const { execSync } = require('child_process');
+
+module.exports = sendDataToSoftReport = (successCallback) => {
 
 dependencies = [];
 
@@ -10,8 +11,8 @@ const dataToSend = Object.keys(config.dependencies).map(dependency => {
 
     if (config.dependencies[dependency] === true) {
         
-        const dependencyScriptPath = '../software/' +  dependency + '.js';
-    
+        const dependencyScriptPath = '../packages/' +  dependency + '.js';
+        
         const retrieveVersion = require(dependencyScriptPath);
 
         const version = retrieveVersion();
@@ -54,6 +55,10 @@ const req = http.request(options, (res) => {
         console.log('Invalid api key');
     }
 
+    if (res.statusCode === 200) {
+        successCallback();
+    }
+
     res.on('data', (data) => {
         //console.log(`BODY: ${chunk}`);
     });
@@ -67,3 +72,4 @@ req.write(requestJsonData)
 
 req.end();
 
+});

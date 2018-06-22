@@ -13,7 +13,7 @@
 ## Installation
 Following command downloads install.js from this repository.
 ```sh
-curl -o- https://raw.githubusercontent.com/optimistdigital/soft-report-linux-client/master/install.js | node
+curl -o- https://raw.githubusercontent.com/optimistdigital/softreport-linux-client/master/install.js | node
 ```
 Command does the following:
 1. Downloads this repository
