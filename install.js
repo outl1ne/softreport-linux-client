@@ -120,7 +120,7 @@ const setupPackages = () => {
 
 const setupServerID = () => {
     question('What is your server ID?', id => {
-        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" http://softreport.test/api/servers/' + id + '?api_token=' + apiToken);
+        const result =  runCommand('curl -s -o /dev/null -w "%{http_code}" https://softreport.io/api/servers/' + id + '?api_token=' + apiToken);
 
         if (parseInt(result) !== 200) {
             rl.write('Invalid server ID (' + result + ')\n');
