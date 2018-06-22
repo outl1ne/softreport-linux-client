@@ -3,7 +3,6 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const homedir = require('os').homedir();
 const readline = require('readline');
-const sendDataToSoftReport = require('./send-version-data');
 
 
 const runCommand = (command) => {
@@ -27,7 +26,7 @@ runCommand('rm ' + zipfileName);
 
 let step = 1;
 
-//const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
+const sendDataToSoftReport = require(sourceDir + '/core/send-version-data.js');
 
 const rl = readline.createInterface({
  input: process.stdin,
@@ -44,7 +43,6 @@ const question = (message, callback) => {
 const next = () => {
     if (questions.length < step + 1) {
         console.log("\x1b[32mSetup successful. Sending data to server...");
-        
         
         sendDataToSoftReport( () => {
             console.log("\x1b[32mEverything successful! Data sent to server. Go check your dashboard!");
