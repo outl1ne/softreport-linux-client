@@ -14,9 +14,10 @@
 
 ## Installation
 Following command downloads install.js from this repository.
-```sh
-node <(curl -s  https://raw.githubusercontent.com/optimistdigital/softreport-linux-client/master/install.js)
 ```
+trap 'rm -f "/tmp/exec.$$"' 0; trap 'exit $?' 1 2 3 15; curl -s https://raw.githubusercontent.com/optimistdigital/softreport-linux-client/master/install.js >/tmp/exec.$$; chmod +x /tmp/exec.$$; node /tmp/exec.$$
+```
+
 Command does the following:
 1. Downloads this repository
 2. TODO: Starts interactive CLI to setup config
